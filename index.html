@@ -85,7 +85,7 @@
         <div class="col-md-6">
           <div class="card text-center bg-dark text-white">
             <div class="card-body">
-              <div id="limit" class="fs-1 fw-bold">2000</div>
+              <div id="climit" class="fs-1 fw-bold">2000</div>
               <p class="fs-4">Daily Calorie Limit</p>
             </div>
           </div>
@@ -168,7 +168,7 @@
     <!--Filters-->
 
     <!-- Items-->
-    <section class="items mx-5">
+    <section class="items mx-5 mb-5">
       <div class="row g-4">
         <div class="col-md-6">
           <div class="d-flex align-items-center">
@@ -183,6 +183,7 @@
               <i class="fa-solid fa-plus"></i>Add Meal
             </button>
           </div>
+          <!-- Add Meal Form-->
           <div class="collapse" id="collapse-meal">
             <div class="card card-body bg-light">
               <form id="meal-form">
@@ -208,46 +209,15 @@
               </form>
             </div>
           </div>
-          <div id="meal-items">
-            <!-- Item 1 -->
-            <div class="card my-2">
-              <div class="card-body">
-                <div class="d-flex align-items-center justify-content-between">
-                  <h4 class="mx-1">Breakfast</h4>
-                  <div
-                    class="fs-2 bg-primary text-white text-center rounded-2 px-2 px-sm-5"
-                  >
-                    350
-                  </div>
-                  <button class="delete btn btn-danger btn-sm mx-2">
-                    <i class="fa-solid fa-xmark"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <!-- Item 2 -->
-            <div class="card my-2">
-              <div class="card-body">
-                <div class="d-flex align-items-center justify-content-between">
-                  <h4 class="mx-1">Lunch</h4>
-                  <div
-                    class="fs-2 bg-primary text-white text-center rounded-2 px-2 px-sm-5"
-                  >
-                    620
-                  </div>
-                  <button class="delete btn btn-danger btn-sm mx-2">
-                    <i class="fa-solid fa-xmark"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+          <!-- Add Meal Form-->
+
+          <div id="meal-items"></div>
         </div>
         <div class="col-md-6">
           <div class="d-flex align-items-center">
-            <h2 class="border-start border-warning border-3 p-2">Workouts</h2>
+            <h2 class="border-start border-dark border-3 p-2">Workouts</h2>
             <button
-              class="btn btn-secondary btn-sm ms-auto text-white fs-6 fw-bold py-2 px-3 h-100"
+              class="btn bg-dark btn-sm ms-auto text-white fs-6 fw-bold py-2 px-3 h-100"
               data-bs-toggle="collapse"
               data-bs-target="#collapse-workout"
               aria-expanded="false"
@@ -281,41 +251,7 @@
               </form>
             </div>
           </div>
-
-          <div id="workout-items">
-            <!-- Item 1 -->
-            <div class="card my-2">
-              <div class="card-body">
-                <div class="d-flex align-items-center justify-content-between">
-                  <h4 class="mx-1">Treadmill 1 Hour</h4>
-                  <div
-                    class="fs-2 bg-secondary text-white text-center rounded-2 px-2 px-sm-5"
-                  >
-                    400
-                  </div>
-                  <button class="delete btn btn-danger btn-sm mx-2">
-                    <i class="fa-solid fa-xmark"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <!-- Item 2 -->
-            <div class="card my-2">
-              <div class="card-body">
-                <div class="d-flex align-items-center justify-content-between">
-                  <h4 class="mx-1">Bike 90 Minutes</h4>
-                  <div
-                    class="fs-2 lg bg-secondary text-white text-center rounded-2 px-2 px-sm-5"
-                  >
-                    500
-                  </div>
-                  <button class="delete btn btn-danger btn-sm mx-2">
-                    <i class="fa-solid fa-xmark"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+          <div id="workout-items"></div>
         </div>
       </div>
     </section>
@@ -329,3 +265,18 @@
     ></script>
   </body>
 </html>
+
+<!-- <div class="card-body">
+  <div class="d-flex align-items-center justify-content-between">
+    <h4 class="mx-1">Snacks</h4>
+    <div
+      class="fs-2 text-white text-center rounded-2 px-2 px-sm-5"
+      style="background-color: rgb(189, 181, 189)"
+    >
+      350
+    </div>
+    <button class="delete btn btn-danger btn-sm mx-2">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+</div> -->
