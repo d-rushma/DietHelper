@@ -23,6 +23,37 @@ class CalorieTracker {
     this._displayNewWorkout(workout);
     this._render();
   }
+  removeMeal(id) {
+    const index = this._meals.findIndex((meal) => meal.id === id);
+    if (index !== -1) {
+      const meal = this._meals[index];
+      this._totalCalories -= meal.calories;
+      this._meals.splice(index, 1);
+      this._render();
+    }
+  }
+  removeWorkout(id) {
+    const index = this._workouts.findIndex((workout) => workout.id === id);
+    if (index !== -1) {
+      const workout = this._workouts[index];
+      this._totalCalories += workout.calories;
+      this._workouts.splice(index, 1);
+      this._render();
+    }
+  }
+  reset() {
+    this._totalCalories = 0;
+    this._meals = [];
+    this._workouts = [];
+    this._render();
+  }
+
+  setLimit(calories) {
+    this._calorieLimit = calories;
+    this._displayCaloriesLimit();
+    this._render();
+  }
+
   _displayCalories() {
     const totalCalories = document.querySelector("#total");
     totalCalories.innerHTML = this._totalCalories;
@@ -152,6 +183,24 @@ class Main {
     document
       .getElementById("workout-form")
       .addEventListener("submit", this._newWorkout.bind(this));
+    document
+      .querySelector("#meal-items")
+      .addEventListener("click", this._removeMeal.bind(this));
+    document
+      .querySelector("#workout-items")
+      .addEventListener("click", this._removeWorkout.bind(this));
+    document
+      .querySelector("#filter-meals")
+      .addEventListener("keyup", this._filterItems.bind(this, "meal"));
+    document
+      .querySelector("#filter-workouts")
+      .addEventListener("keyup", this._filterItems.bind(this, "workout"));
+    document
+      .querySelector("#reset")
+      .addEventListener("click", this._resetAll.bind(this));
+    document
+      .querySelector("#limit-form")
+      .addEventListener("submit", this._setLimit.bind(this));
   }
   _newMeal(e) {
     e.preventDefault();
@@ -186,6 +235,61 @@ class Main {
     const bsCollapse = new bootstrap.Collapse(collapseWorkout, {
       toggle: true,
     });
+  }
+  _removeMeal(e) {
+    if (
+      e.target.classList.contains("delete") ||
+      e.target.classList.contains("fa-xmark")
+    ) {
+      if (confirm("Are you sure?")) {
+        const id = e.target.closest(".card").getAttribute("data-id");
+        this._tracker.removeMeal(id);
+        e.target.closest(".card").remove();
+      }
+    }
+  }
+  _removeWorkout(e) {
+    if (
+      e.target.classList.contains("delete") ||
+      e.target.classList.contains("fa-xmark")
+    ) {
+      if (confirm("Are you sure?")) {
+        const id = e.target.closest(".card").getAttribute("data-id");
+        this._tracker.removeWorkout(id);
+        e.target.closest(".card").remove();
+      }
+    }
+  }
+  _filterItems(type, e) {
+    const text = e.target.value.toLowerCase();
+    document.querySelectorAll(`#${type}-items .card`).forEach((item) => {
+      const name = item.firstElementChild.firstElementChild.textContent;
+      if (name.toLocaleLowerCase().indexOf(text) !== -1) {
+        item.style.display = "block";
+      } else {
+        item.style.display = "none";
+      }
+    });
+  }
+  _resetAll() {
+    this._tracker.reset();
+    document.querySelector("#meal-items").innerHTML = "";
+    document.querySelector("#workout-items").innerHTML = "";
+    document.querySelector("#filter-meals").value = "";
+    document.querySelector("#filter-workouts").value = "";
+  }
+  _setLimit(e) {
+    e.preventDefault();
+    const limit = document.querySelector("#limit");
+    if (limit.value === "" || limit.value < 0) {
+      alert("enter valid calories");
+      return;
+    }
+    this._tracker.setLimit(+limit.value);
+    limit.value = "";
+    const clModal = document.querySelector("#goal");
+    const modal = bootstrap.Modal.getInstance(clModal);
+    modal.hide();
   }
 }
 

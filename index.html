@@ -32,51 +32,11 @@
           >
             Goal
           </button>
-          <button class="btn btn-outline-light mx-2">Reset</button>
+          <button id="reset" class="btn btn-outline-light mx-2">Reset</button>
         </div>
       </div>
     </nav>
-    <div
-      class="modal fade"
-      id="goal"
-      tabindex="-1"
-      aria-labelledby="my-modal-label"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="my-modal-label">Set Daily Limit</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <form id="goal" class="mb-5">
-              <label for="limit" class="form-label">Daily Limit</label><br />
-              <input
-                type="number"
-                id="limit"
-                name="cal"
-                placeholder="in calories"
-                required
-                class="form-control"
-              />
-            </form>
-            <button
-              type="button"
-              class="btn btn-primary"
-              style="font-size: 1rem"
-            >
-              Save
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+
     <!-- NAV BAR -->
 
     <!-- Status Bar-->
@@ -256,7 +216,47 @@
       </div>
     </section>
     <!-- Items-->
-
+    <div
+      class="modal fade"
+      id="goal"
+      tabindex="-1"
+      aria-labelledby="limitModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fs-5" id="limitModalLabel">
+              Set Daily Limit
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="limit-form" class="mb-5">
+              <label for="limit" class="form-label">Daily Limit</label><br />
+              <input
+                type="number"
+                id="limit"
+                placeholder="in calories"
+                class="form-control"
+              />
+              <button
+                type="submit"
+                class="btn btn-primary mt-4"
+                style="font-size: 1rem"
+              >
+                Save
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="js/bootstrap.bundle.min.js" defer></script>
     <script src="js/app.js" defer></script>
     <script
