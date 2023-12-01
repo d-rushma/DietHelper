@@ -282,14 +282,23 @@ class Main {
     e.preventDefault();
     const limit = document.querySelector("#limit");
     if (limit.value === "" || limit.value < 0) {
-      alert("enter valid calories");
+      alert("Enter a valid calorie value.");
       return;
     }
     this._tracker.setLimit(+limit.value);
     limit.value = "";
-    const clModal = document.querySelector("#goal");
-    const modal = bootstrap.Modal.getInstance(clModal);
-    modal.hide();
+    const goalModal = document.getElementById("goal");
+    const modalInstance = bootstrap.Modal.getInstance(goalModal);
+    if (modalInstance) {
+      modalInstance.hide();
+      goalModal.classList.remove("show");
+      goalModal.setAttribute("aria-hidden", "true");
+      goalModal.style.display = "none";
+      const backdrop = document.querySelector(".modal-backdrop");
+      if (backdrop) {
+        backdrop.remove(); // Remove the backdrop element if present
+      }
+    }
   }
 }
 

@@ -18,3 +18,15 @@ nav {
   justify-content: space-evenly;
   font-size: 1.5rem;
 }
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+}
+
+.content {
+  height: 900px;
+}
